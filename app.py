@@ -1,9 +1,13 @@
 import gradio as gr
 from huggingface_hub import InferenceClient
+from flask import Flask, redirect, render_template
+import threading
 
 """
 For more information on `huggingface_hub` Inference API support, please check the docs: https://huggingface.co/docs/huggingface_hub/v0.22.2/en/guides/inference
 """
+
+app = Flask(__name__)
 client = InferenceClient("HuggingFaceH4/zephyr-7b-beta")
 
 
@@ -61,6 +65,18 @@ demo = gr.ChatInterface(
     ],
 )
 
+# Function to run Gradio in a separate thread
+def run_gradio():
+    demo.launch(server_name="0.0.0.0", server_port=7860, share=False)
+
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 if __name__ == "__main__":
-    demo.launch()
+    gradio_thread = threading.Thread(target=run_gradio)
+    gradio_thread.daemon = True  # Ensure the thread exits when Flask does
+    gradio_thread.start()
+
+    # Now Flask runs on its own port (5000)
+    app.run(debug=True, port=5000)
