@@ -1,0 +1,144 @@
+:root {
+    --parchment: rgba(244, 228, 188, 0.9);
+    --ink: #2c1810;
+    --water-lily: #4a7c59;
+    --monet-blue: #4f6d8c;
+    --sunset: #d88c51;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: url('images/monet-art.jpg') center/cover fixed;
+    font-family: 'Palatino', serif;
+    color: var(--ink);
+}
+
+#chat-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--parchment);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    color: var(--ink);
+    font-style: italic;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#chat-box {
+    height: 500px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+}
+
+.message {
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-message {
+    text-align: right;
+}
+
+.bot-message {
+    text-align: left;
+}
+
+.message-content {
+    display: inline-block;
+    max-width: 80%;
+    padding: 15px;
+    border-radius: 10px;
+    line-height: 1.6;
+    position: relative;
+}
+
+.user-message .message-content {
+    background: rgba(216, 140, 81, 0.9);
+    color: white;
+    margin-left: 20%;
+}
+
+.bot-message .message-content {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--ink);
+    margin-right: 20%;
+    font-family: 'Palatino', serif;
+    font-style: italic;
+}
+
+.typing {
+    display: inline-block;
+}
+
+.typing::after {
+    content: '▋';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+#user-input {
+    width: calc(100% - 120px);
+    padding: 15px;
+    border: 2px solid var(--water-lily);
+    border-radius: 25px;
+    margin-right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    font-family: 'Palatino', serif;
+    font-size: 16px;
+}
+
+#send-button {
+    width: 100px;
+    padding: 15px;
+    background: rgba(74, 124, 89, 0.9);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: 'Palatino', serif;
+    font-size: 16px;
+}
+
+#send-button:hover {
+    background: var(--monet-blue);
+}
+
+/* Scroll bar styling */
+#chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat-box::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+}
+
+#chat-box::-webkit-scrollbar-thumb {
+    background: var(--water-lily);
+    border-radius: 4px;
+}
