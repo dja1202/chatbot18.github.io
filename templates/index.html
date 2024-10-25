@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letters from Claude Monet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script> 
+</head>
+<body>
+    <div id="chat-container">
+        <h1>Letters from Claude Monet</h1>
+        <div id="chat-box">
+            <div id="messages"></div>
+        </div>
+        <div id="input-container">
+            <textarea id="user-input" rows="1" placeholder="Type your message..."></textarea>
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+</body>
+</html>
