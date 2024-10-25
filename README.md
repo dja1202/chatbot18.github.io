@@ -6,4 +6,6 @@
 
 ### Requirements:
 
+- in the requirements.txt
+
 ### Tools and Technologies: 
