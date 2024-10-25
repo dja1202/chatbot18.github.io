@@ -17,6 +17,7 @@ body {
 
 #chat-container {
     max-width: 800px;
+    height: 100vh;
     margin: 0 auto;
     background: var(--parchment);
     padding: 30px;
