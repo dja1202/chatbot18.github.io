@@ -7,6 +7,6 @@
 ### Requirements:
 
 - in the requirements.txt
-- Use this cimmand to install all reqirements: pip install -r requirements.txt
+- Use this command to install all reqirements: pip install -r requirements.txt
 
 ### Tools and Technologies: 
