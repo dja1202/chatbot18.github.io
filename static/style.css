@@ -18,15 +18,26 @@ body {
     color: var(--ink);
 }
 
+.monet-image {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 500px; /* Adjust this value as needed */
+    height: auto; /* Keeps the aspect ratio */
+    margin: 0px 4%;
+  }
+  
+
 #chat-container {
     max-width: 800px;
     max-height: 100vh;
-    margin: 10px auto;
+    margin: 2%;
     background: var(--parchment);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    position: relative;
+    position: absolute;
+    right: 0px;
 }
 
 h1 {
