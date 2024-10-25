@@ -4,6 +4,7 @@
     --water-lily: #4a7c59;
     --monet-blue: #4f6d8c;
     --sunset: #d88c51;
+    --lavender: #a68fc3;
 }
 
 body {
@@ -135,7 +136,7 @@ h1 {
 
 #send-button {
     padding: 15px 20px;
-    background: rgba(124, 147, 211, 0.9);
+    background: #4f6d8c;
     color: white;
     border: none;
     border-radius: 25px;
