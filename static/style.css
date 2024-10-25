@@ -76,7 +76,8 @@ h1 {
 }
 
 .user-message .message-content {
-    background: rgba(216, 140, 81, 0.9);
+    background:#4a7c59;
+    (216, 140, 81, 0.9);
     color: white;
     margin-left: 20%;
 }
