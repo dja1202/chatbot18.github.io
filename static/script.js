@@ -83,11 +83,12 @@ async function handleSend() {
 sendButton.addEventListener('click', handleSend);
 userInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
+        e.preventDefault();
         handleSend();
     }
 });
 
 // Add welcome message when the page loads
 window.addEventListener('load', async () => {
-    await addMessage("Bonjour! It is with great pleasure that I greet you today. My name is Claude Monet, and I am a painter, a lover of nature, and a captivated observer of the interplay of light. I hope that my words have given you a sense of my passion for painting, my love for nature, and my deep reverence for the interplay of light. I would be honored to converse with you, to share more of my thoughts and experiences. Please, do not hesitate to ask me anything.", false);
+    await addMessage("Bonjour! It is with great pleasure that I greet you today. My name is Claude Monet, and I am a painter, a lover of nature, and a captivated observer of the interplay of light. I hope that my words have given you a sense of my passion for painting, my love for nature, and my deep reverence for the interplay of light. I would be honored to converse with you, to share more of my thoughts and experiences. Please, do not hesitate to ask me anything about the impressionist era, inspiration behind my iconic paintings or my life as an artist.", false);
 });
