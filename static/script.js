@@ -83,6 +83,7 @@ async function handleSend() {
 sendButton.addEventListener('click', handleSend);
 userInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
+        e.preventDefault();
         handleSend();
     }
 });

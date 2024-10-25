@@ -8,21 +8,18 @@
 
 body {
     margin: 0;
-    padding: 20px;
+    padding: 0px;
     min-height: 100vh;
     background: url('images/monet-art.jpg') center/cover fixed;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    overflow: hidden;
     font-family: 'Palatino', serif;
     color: var(--ink);
 }
 
 #chat-container {
     max-width: 800px;
-    height: 100vh;
-    margin: 0 auto;
+    max-height: 100vh;
+    margin: 10px auto;
     background: var(--parchment);
     padding: 30px;
     border-radius: 15px;
@@ -39,7 +36,7 @@ h1 {
 }
 
 #chat-box {
-    height: 500px;
+    height: 550px;
     overflow-y: auto;
     margin-bottom: 20px;
     padding: 20px;
