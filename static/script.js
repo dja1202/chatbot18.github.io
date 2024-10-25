@@ -15,29 +15,39 @@ async function addMessage(content, isUser = false) {
     messagesDiv.appendChild(messageDiv);
     
     if (!isUser) {
-        // Add formal letter opening for bot messages
-        messageContent.innerHTML = 'Mon cher ami,<br><br>';
+        // Add formal letter opening
+        const opening = document.createElement('div');
+        opening.innerHTML = 'Mon cher ami,<br><br>';
+        opening.className = 'fade-in-text';
+        messageContent.appendChild(opening);
         
-        // Create typing effect
-        let i = 0;
-        messageContent.innerHTML += '<span class="typing"></span>';
+        // Create container for streaming text
+        const textContainer = document.createElement('div');
+        textContainer.style.whiteSpace = 'pre-wrap';  // Preserve whitespace and wrapping
+        messageContent.appendChild(textContainer);
         
-        // Stream each character
-        for (const char of content) {
-            await new Promise(resolve => setTimeout(resolve, 50));
-            const typing = messageContent.querySelector('.typing');
-            if (typing) {
-                typing.textContent += char;
-            }
+        // Stream each word with fade effect
+        const words = content.split(' ').filter(word => word.trim() !== ''); // Filter out empty words
+        for (let i = 0; i < words.length; i++) {
+            const wordSpan = document.createElement('span');
+            wordSpan.className = 'fade-in-text word-space';
+            // Add space after word unless it's the last word
+            wordSpan.textContent = words[i] + (i === words.length - 1 ? '' : ' '); // Add space conditionally
+            textContainer.appendChild(wordSpan);
+            await new Promise(resolve => setTimeout(resolve, 20));
         }
         
-        // Add signature after typing is complete
-        messageContent.innerHTML = 'Mon cher ami,<br><br>' + content + '<br><br>Cordialement,<br>Claude Monet';
+        // Add signature after all words are displayed
+        await new Promise(resolve => setTimeout(resolve, 500));
+        const signature = document.createElement('div');
+        signature.innerHTML = '<br><br>Cordialement,<br>Claude Monet';
+        signature.className = 'fade-in-text';
+        messageContent.appendChild(signature);
     } else {
-        messageContent.textContent = content;
+        messageContent.textContent = content;  // User input displayed directly
     }
 
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;  // Scroll to the bottom
 }
 
 // Main send function
@@ -59,15 +69,17 @@ async function handleSend() {
         });
 
         const data = await response.json();
+        // Clean up the response to remove excessive whitespace or breaks
+        const cleanedResponse = data.response.replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim();
         // Display bot response with streaming effect
-        await addMessage(data.response, false);
+        await addMessage(cleanedResponse, false);
     } catch (error) {
         console.error('Error:', error);
         await addMessage("Je suis désolé, there seems to be an issue with our correspondence.", false);
     }
 }
 
-// Event listeners
+// Allow user to click send button or use Enter key
 sendButton.addEventListener('click', handleSend);
 userInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {

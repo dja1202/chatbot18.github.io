@@ -142,3 +142,22 @@ h1 {
     background: var(--water-lily);
     border-radius: 4px;
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in-text {
+    display: inline-block;
+    animation: fadeIn 0.5s ease-in forwards;
+    opacity: 0;
+}
+
+.word-space {
+    white-space: pre;  /* Preserve spaces */
+}

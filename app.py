@@ -4,7 +4,7 @@ from gradio_client import Client
 app = Flask(__name__)
 client = Client("mfaustino7/testbot")
 
-# Define your Gradio chatbot interface
+# Gradio chatbot interface
 def chatbot(message):
     result = client.predict(
         message=message,
