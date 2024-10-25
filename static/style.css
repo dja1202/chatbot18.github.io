@@ -12,6 +12,7 @@ body {
     min-height: 100vh;
     background: url('images/monet-art.jpg') center/cover fixed;
     background-size: 100%;
+    background-repeat: no-repeat;
     font-family: 'Palatino', serif;
     color: var(--ink);
 }
