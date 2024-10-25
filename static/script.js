@@ -44,7 +44,7 @@ async function addMessage(content, isUser = false) {
         signature.className = 'fade-in-text';
         messageContent.appendChild(signature);
     } else {
-        messageContent.textContent = content;  // User input displayed directly
+        messageContent.innerHTML = content.replace(/\n/g, '<br>');  // Replace newlines with <br> for HTML
     }
 
     messagesDiv.scrollTop = messagesDiv.scrollHeight;  // Scroll to the bottom
