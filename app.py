@@ -14,6 +14,11 @@ def chatbot(message):
         top_p=0.95,
         api_name="/chat"
     )
+
+    #If he says "Monet: " this removes it. 
+    if result.startswith("Monet: "):
+        result = result.replace("Monet: ", "")
+
     return result
 
 @app.route("/")
